@@ -35,7 +35,13 @@
 	# What was the name of the function we have seen to check the length of a container?  Use your CLI to access the Python documentation and get help(len).
 
 def one(input1, input2):
-	return ""
+
+	if len(input1) == len(input2):
+		return input1 + " " + input2
+	elif len(input1) > len(input2):
+		return input1
+	elif len(input2) > len(input1):
+		return input2
 
 
 
@@ -63,7 +69,11 @@ def one(input1, input2):
 	# Use your CLI to access the Python documentation and get help manipulating strings - help(str).
 
 def two(input):
-	return ""
+    try:
+            b1 = input.lower().index('bert')
+            b2 = input.lower().index('bert', b1+4)
+    except (IndexError, ValueError): return ""
+    return input[b1+4:b2]
 
 
 
@@ -88,7 +98,14 @@ def two(input):
 	# No Hints for this question
 
 def three(arg1):
-	return "null"
+	if ((arg1%3==0) and (arg1%5!=0)):
+		return "fizz"
+	elif ((arg1%5==0) and (arg1%3!=0)):
+		return "buzz"
+	elif ((arg1%3==0) and (arg1%5==0)):
+		return "fizzbuzz"
+	elif ((arg1%3!=0) or (arg1%5!=0)):
+		return "null"
 
 
 	# <QUESTION 4>
@@ -114,7 +131,21 @@ def three(arg1):
 	# help(int) for working with numbers and help(str) for working with Strings.
 
 def four(arg1):
-	return 0
+	intg = 0
+	highest = 0
+	currentSum = 0
+	while(intg < len(arg1)):
+		if (arg1[intg] != " "):
+			currentSum += int(arg1[intg])
+
+		if (arg1[intg] == " ") or (intg+1 == len(arg1)):
+			if (currentSum > highest):
+				highest = currentSum
+			
+			currentSum = 0
+		intg += 1
+
+	return highest
 
 	# <QUESTION 5>
 
@@ -163,7 +194,14 @@ def five(input):
 
 
 def six(input):
-    return False
+    if "cei" in input:
+        return True
+    elif "cie" in input:
+        return False
+    elif "ie" in input:
+        return True
+    else:
+        return False
 
 	# <QUESTION 7>
 
@@ -180,7 +218,13 @@ def six(input):
 	# How do we ignore case in a String? help(str) may offer some insight.
 
 def seven(input):
-    return 0
+    word = input.casefold()
+    vowel_count = 0
+    vowel_list = "a", "e", "i", "o","u"
+    for letters in word:
+        if letters in vowel_list:
+            vowel_count += 1
+    return vowel_count
 
 	# <QUESTION 8>
 
@@ -198,7 +242,11 @@ def seven(input):
 	# You may need to create a list of numbers from 0 to i, take a look at help(range).
 
 def eight(input):
-	return 1
+    factorial = 1
+    for num in range (2, input + 1):
+        factorial *= num
+		
+    return factorial
 
 	# <QUESTION 9>
 
